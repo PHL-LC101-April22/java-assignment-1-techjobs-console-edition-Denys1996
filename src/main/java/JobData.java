@@ -69,7 +69,7 @@ public class JobData {
 
         // load data, if not already loaded
         loadData();
-
+        value = value.toLowerCase();
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
@@ -94,15 +94,16 @@ public class JobData {
 
         // load data, if not already loaded
         loadData();
-
+        value = value.toLowerCase();
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> person : allJobs) {
+
             for(Map.Entry<String, String> category : person.entrySet()) {
-                String searchCategory = category.getValue().toLowerCase();
-                if(jobs.contains(person)) {
-                    continue;
-                } else if (searchCategory.contains(value)) {
+                String categoryKey = category.getKey().toLowerCase();
+                String categoryValue = category.getValue().toLowerCase();
+
+                if(categoryKey.contains(value) || categoryValue.contains(value)){
                     jobs.add(person);
                 }
             }
