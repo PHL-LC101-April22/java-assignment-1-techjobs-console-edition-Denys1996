@@ -51,6 +51,7 @@ public class JobData {
         loadData();
 
         // Bonus mission; normal version returns allJobs
+        ArrayList<HashMap<String, String>> cloneAllJobs = (ArrayList) allJobs.clone();
         return new ArrayList<>(allJobs);
     }
 
@@ -94,23 +95,24 @@ public class JobData {
 
         // load data, if not already loaded
         loadData();
-        value = value.toLowerCase();
+
+        // create a new ArrayList
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
-        for (HashMap<String, String> person : allJobs) {
+        for (HashMap<String, String> job : allJobs) {
 
-            for(Map.Entry<String, String> category : person.entrySet()) {
-                String categoryKey = category.getKey().toLowerCase();
-                String categoryValue = category.getValue().toLowerCase();
+            for(String jobValue : job.values()) {
 
-                if(categoryKey.contains(value) || categoryValue.contains(value)){
-                    jobs.add(person);
+                if ( jobValue.toLowerCase().contains(value.toLowerCase())) {
+                    jobs.add(job);
                 }
+
             }
         }
 
         return jobs;
     }
+
 
     /**
      * Read in data from a CSV file and store it in a list
