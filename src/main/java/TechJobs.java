@@ -121,9 +121,9 @@ public class TechJobs {
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
         if (someJobs.isEmpty()){
-            System.out.println("No Results");
-        } else {
-            for (HashMap<String, String> jobs : someJobs){
+            System.out.printf("No Results");
+        }
+        for (HashMap<String, String> jobs : someJobs){
                 System.out.println("\n*****");
 
                 for (Map.Entry<String, String> job : jobs.entrySet()){
@@ -134,5 +134,4 @@ public class TechJobs {
                 System.out.println("*****");
             }
         }
-    }
 }
